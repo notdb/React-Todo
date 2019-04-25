@@ -14,7 +14,7 @@ const todoArray = [
     completed: false
   }
 ];
-
+console.log(todoArray);
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -29,6 +29,36 @@ class App extends React.Component {
         completed: ""
       }
     };
+    this.isThisChecked = this.isThisChecked.bind(this);
+    this.removeTodo = this.removeTodo.bind(this);
+  }
+  /*
+    isThisChecked(something) {
+	if (something==='true') {
+	    this.setState({
+  */
+
+  isThisChecked(something) {
+    console.log(something);
+    //this.setState({ value: something });
+  }
+
+  removeTodo(event) {
+    event.preventDefault();
+    let bum = this.state.todoData;
+    let rum = bum.filter(function(item) {
+      return item.completed !== "true";
+    });
+    console.log(rum);
+
+    let plzUpdate = this.setState(prevState => ({
+      todoData: rum,
+      newTodo: {
+        task: "",
+        id: "",
+        completed: ""
+      }
+    }));
   }
 
   addTodo = event => {
@@ -41,23 +71,26 @@ class App extends React.Component {
         completed: ""
       }
     });
+    // console.log(todoArray);
   };
 
   handleChanges = event => {
-    console.log(event.target.name);
+    console.log(event.target.name + " aaa");
     this.setState({
       newTodo: {
         ...this.state.newTodo,
-        task: event.target.value
+        task: event.target.value,
+        id: Date.now(),
+        completed: false
       }
     });
+    console.log(this.state.todoData);
   };
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <p>test</p>
         {/*
         <div className="Todo-List">
           {this.state.todoData.map(todo => (
@@ -65,7 +98,7 @@ class App extends React.Component {
           ))}
         </div>
 	     */}
-        <TodoList todoData={this.state.todoData} />
+        <TodoList todoData={this.state.todoData} nameID={this.isThisChecked} />
         {/*   
         <form onSubmit={this.addTodo}>
           <input
@@ -76,7 +109,8 @@ class App extends React.Component {
           />
           <button>Add todo</button>
         </form>
-	     */}
+	 */}
+
         <TodoForm newTodo={this.state.newTodo} what={this} />
       </div>
     );
