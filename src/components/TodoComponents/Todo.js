@@ -1,5 +1,5 @@
 import React from "react";
-import "./Todo.css";
+
 /*
 function Todo(props) {
   return (
@@ -34,24 +34,24 @@ class Todo extends React.Component {
     console.log(event.target.checked);
     if (this.props.todo.completed === "true") {
       this.props.todo.completed = "false";
-      this.setState({ value: (this.state.value += 1) });
+      this.setState({ value: this.state.value - 1 });
     } else {
       this.props.todo.completed = "true";
-      this.setState({ value: (this.state.value -= 1) });
+      this.setState({ value: this.state.value + 1 });
     }
 
     this.props.onBroChecked(this.props.todo.completed);
   }
 
   render() {
-    let className = "bbb";
-    console.log(this.state.value);
-    if (this.state.value == 0) {
-      className = "aaa";
+    let className = " bbb";
+    if (this.state.value === 1) {
+      className = " aaa";
+    } else {
+      className = " bbb";
     }
-
     return (
-      <div className="todo">
+      <div className={className}>
         <input
           type="checkbox"
           className={className}

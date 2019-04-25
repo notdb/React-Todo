@@ -3,6 +3,7 @@ import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
 import "./App.css";
 import "./components/TodoComponents/Todo.css";
+import "./index.css";
 
 const todoArray = [
   {
