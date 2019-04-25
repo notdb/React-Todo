@@ -8,6 +8,8 @@
 
 import React from "react";
 import Todo from "./Todo.js";
+import "./Todo.css";
+
 /*
 const TodoList = props => {
     return <div className="todo-list">
@@ -40,7 +42,12 @@ class Todolist extends React.Component {
     return (
       <div className="Todo-List">
         {this.props.todoData.map(todo => (
-          <Todo todo={todo} onBroChecked={this.props.nameID} />
+          <Todo
+            todo={todo}
+            onBroChecked={this.props.nameID}
+            passingThru={this.props.faceID}
+            key={todo.id}
+          />
         ))}
       </div>
     );

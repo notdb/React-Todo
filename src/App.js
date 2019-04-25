@@ -1,6 +1,8 @@
 import React from "react";
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
+import "./App.css";
+import "./components/TodoComponents/Todo.css";
 
 const todoArray = [
   {
@@ -45,20 +47,21 @@ class App extends React.Component {
 
   removeTodo(event) {
     event.preventDefault();
+
     let bum = this.state.todoData;
     let rum = bum.filter(function(item) {
       return item.completed !== "true";
     });
-    console.log(rum);
 
-    let plzUpdate = this.setState(prevState => ({
-      todoData: rum,
-      newTodo: {
-        task: "",
-        id: "",
-        completed: ""
+    let casablanca = this.setState(
+      {
+        todoData: rum
+      },
+      () => {
+        console.log(this.state.todoData);
       }
-    }));
+    );
+    return casablanca;
   }
 
   addTodo = event => {
@@ -98,7 +101,11 @@ class App extends React.Component {
           ))}
         </div>
 	     */}
-        <TodoList todoData={this.state.todoData} nameID={this.isThisChecked} />
+        <TodoList
+          todoData={this.state.todoData}
+          nameID={this.isThisChecked}
+          faceID={this.removeTodo}
+        />
         {/*   
         <form onSubmit={this.addTodo}>
           <input
