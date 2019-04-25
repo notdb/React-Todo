@@ -10,3 +10,18 @@ h2 {
      text-decoration: line-through;
 
 }
+
+.Todo-List {
+    background: yellow;
+    padding-left: 25;
+    width: 400px;
+    margin-top: 15px;
+}
+
+.whataaa {
+    display:flex;
+    width: 500px;
+    flex-direction:column-reverse;
+    padding-left: 500px;
+    padding-top: 500px;
+}
